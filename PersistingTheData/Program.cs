@@ -19,17 +19,19 @@ Urun urun22 = new Urun()
 
 };
 
-var state = context.Entry(urun12).State;  // Entity durumunu görüntüleme 
-Console.WriteLine(state);
+//var state = context.Entry(urun12).State;  // Entity durumunu görüntüleme 
+//Console.WriteLine(state);
 
 
-await context.AddAsync(urun12);       //
-await context.Uruns.AddAsync(urun12); //   tip güvenli
-await context.Uruns.AddRangeAsync(urun12, urun22);
-await context.SaveChangesAsync(); //  işlemler başarısız olur ise işlemleri geri alır
+//await context.AddAsync(urun12);       //
+//await context.Uruns.AddAsync(urun12); //   tip güvenli
+//await context.Uruns.AddRangeAsync(urun12, urun22);
+//await context.SaveChangesAsync(); //  işlemler başarısız olur ise işlemleri geri alır
 
 
 #endregion
+
+
 
 #region Veri Günceleme
 
@@ -38,7 +40,7 @@ await context.SaveChangesAsync(); //  işlemler başarısız olur ise işlemleri
 Urun? urun4 = await context.Uruns.FirstOrDefaultAsync(x => x.Id == 1);
 urun4.Name = "urun abc";
 
-await context.SaveChangesAsync();
+//await context.SaveChangesAsync();
 
 
 #endregion
@@ -61,8 +63,8 @@ Urun urun2 = new()
 
 #region Update Fonksiyonu
 
-context.Uruns.Update(urun2);
-await context.SaveChangesAsync();
+//context.Uruns.Update(urun2);
+//await context.SaveChangesAsync();
 
 #endregion
 
@@ -75,9 +77,9 @@ await context.SaveChangesAsync();
 Urun? urun1 = await context.Uruns.FirstOrDefaultAsync(x => x.Id.Equals(1));
 urun1.Name = "dsfdghjhkj";
 
-Console.WriteLine(context.Entry(urun1).State);
-await context.SaveChangesAsync();
-Console.WriteLine(context.Entry(urun1).State);
+//Console.WriteLine(context.Entry(urun1).State);
+//await context.SaveChangesAsync();
+//Console.WriteLine(context.Entry(urun1).State);
 
 
 #endregion
@@ -99,7 +101,50 @@ foreach (var urun in urunler)
 
 }
 
-await context.SaveChangesAsync();
+//await context.SaveChangesAsync();
+
+#endregion
+
+
+#region Veri Silme işlemi
+
+Urun? urunA = await context.Uruns.FirstOrDefaultAsync(x => x.Id == 2);
+//context.Uruns.Remove(urunA);
+//await context.SaveChangesAsync();
+
+#endregion
+
+#region Takip edilmeyen nesneler nasıl silinir
+
+Urun u = new()
+{
+    Id = 10
+};
+
+context.Uruns.Remove(u);
+context.SaveChanges();
+
+
+#endregion
+
+#region Birden fazla veri silinirken
+
+foreach (var urun in context.Uruns)
+{
+    context.Uruns.RemoveRange(urun);
+}
+
+#endregion
+
+#region EntityState ile veri silinirken
+
+Urun ur = new()
+{
+    Id = 10
+};
+
+context.Entry(ur).State = EntityState.Deleted;
+context.SaveChanges();
 
 #endregion
 
@@ -115,6 +160,7 @@ public class EticaretContextDb : DbContext
     }
 
 }
+
 
 
 public class Urun

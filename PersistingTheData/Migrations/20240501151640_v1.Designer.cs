@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PersistingTheData.Migrations
 {
     [DbContext(typeof(EticaretContextDb))]
-    [Migration("20240429185611_v1")]
+    [Migration("20240501151640_v1")]
     partial class v1
     {
         /// <inheritdoc />
