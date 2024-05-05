@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 //ReSharper disable all
 EticaretContextDb context = new EticaretContextDb();
@@ -127,12 +125,32 @@ var uruns4 = context.Uruns
 
 #region GroupBy
 
+#region MethodSyntax
 
+var datas = context.Uruns.GroupBy(x => x.Fiyat).Select(x => new
+{
+    Count = x.Count(),
+    Fiyat = x.Key
+}).ToList();
+
+#endregion
+
+#region Query Syntax
+
+var datass = (from urun in context.Uruns
+              group urun by urun.Fiyat
+             into @group
+              select new
+              {
+                  Count = @group.Count(),
+                  Fiyat = @group.Key
+              }).ToList();
+
+#endregion
 
 #endregion
 
 #region Foreach
-
 
 
 #endregion
@@ -149,8 +167,6 @@ public class EticaretContextDb : DbContext
     }
 
 }
-
-
 
 public class Urun
 {
