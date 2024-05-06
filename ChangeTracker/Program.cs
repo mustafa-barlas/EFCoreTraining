@@ -122,7 +122,12 @@ Console.WriteLine(context.Entry(uruna).State);
 
 #region Context üzerinden changetracker
 
+var urunlerr = context.Uruns.FirstOrDefault(x => x.Id.Equals(55));
 
+context.Entry(urun).OriginalValues.GetValue<float>(nameof(Urun.Fiyat));
+
+context.Entry(urun).CurrentValues.GetValue<decimal>(nameof(Urun.Fiyat));
+context.Entry(urun).GetDatabaseValues();
 
 #endregion
 
@@ -138,6 +143,19 @@ public class EticaretContextDb : DbContext
         optionsBuilder.UseSqlServer("Server = MUSTAFABRLS; Database = Test1; Trusted_Connection = true; TrustServerCertificate = True;");
     }
 
+
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+    {
+        var entries = ChangeTracker.Entries();
+        foreach (var entry in entries)
+        {
+            if (entry.State == EntityState.Added)
+            {
+                
+            }
+        }
+        return base.SaveChangesAsync(cancellationToken);
+    }
 }
 
 public class Urun
