@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Querying", "Querying\Queryi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeTracker", "ChangeTracker\ChangeTracker.csproj", "{E1380684-A277-49EB-82D8-4A3D69788432}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking", "Tracking\Tracking.csproj", "{DC337188-3DB1-43A6-8423-67AB21F7AEE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tracking", "Tracking\Tracking.csproj", "{DC337188-3DB1-43A6-8423-67AB21F7AEE9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "One_To_OneRelationships", "Relationships\One_To_OneRelationships.csproj", "{170EE5BB-563D-407C-B1CA-A0B8DDC68F08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One_To_Many_Relationships", "One_To_Many_Relationships\One_To_Many_Relationships.csproj", "{9A22E536-993B-473E-A0B6-3D564D468186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{DC337188-3DB1-43A6-8423-67AB21F7AEE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC337188-3DB1-43A6-8423-67AB21F7AEE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC337188-3DB1-43A6-8423-67AB21F7AEE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{170EE5BB-563D-407C-B1CA-A0B8DDC68F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170EE5BB-563D-407C-B1CA-A0B8DDC68F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170EE5BB-563D-407C-B1CA-A0B8DDC68F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170EE5BB-563D-407C-B1CA-A0B8DDC68F08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A22E536-993B-473E-A0B6-3D564D468186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A22E536-993B-473E-A0B6-3D564D468186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A22E536-993B-473E-A0B6-3D564D468186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A22E536-993B-473E-A0B6-3D564D468186}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
