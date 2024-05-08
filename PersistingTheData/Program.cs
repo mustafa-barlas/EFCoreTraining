@@ -31,8 +31,6 @@ Urun urun22 = new Urun()
 
 #endregion
 
-
-
 #region Veri Günceleme
 
 
@@ -104,7 +102,6 @@ foreach (var urun in urunler)
 //await context.SaveChangesAsync();
 
 #endregion
-
 
 #region Veri Silme işlemi
 
