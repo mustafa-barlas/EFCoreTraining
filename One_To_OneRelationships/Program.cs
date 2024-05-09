@@ -4,7 +4,14 @@
 //Principal  kendi başına var olabilen entitydir.
 //Dependent  kendi başına var olamayan entitydir.
 
+class Program
+{
+    static void Main(string[] args)
+    {
 
+    }
+
+}
 
 #region Default Convention
 

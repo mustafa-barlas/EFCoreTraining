@@ -2,7 +2,20 @@
 
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+class Program
+{
 
+
+
+    static void Main(string[] args)
+    {
+
+
+    }
+
+
+
+}
 
 
 #region Default Convention

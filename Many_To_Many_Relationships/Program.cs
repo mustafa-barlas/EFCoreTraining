@@ -1,9 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 // ReSharper disable all
 namespace Many_To_Many_Relationships;
 
+class Program
+{
+   
 
+
+    static void Main(string[] args)
+    {
+
+        
+    }
+
+
+
+}
 
 #region Default Convention
 
