@@ -27,7 +27,7 @@ public class ApplicationContext1 : DbContext
 
 #endregion
 
-#region Configurations | Data Annotations And Fluent Api
+#region Configurations | Data Annotations And Fluent API
 
 #region Table - ToTable
 // Generate edilecek tablonun adını belirlememizi sağlar
@@ -38,7 +38,6 @@ public class Person1
     public int Id { get; set; }
     public string? Name { get; set; }
 
-    public Address? Address { get; set; }
 }
 
 
@@ -363,7 +362,7 @@ public class ApplicationContext13 : DbContext
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
+
     }
 }
 
@@ -371,7 +370,351 @@ public class ApplicationContext13 : DbContext
 
 #endregion
 
+#region Configurations | Fluent API
 
+#region Composite Key
+
+// tek bir kolonu değil de birden fazla kolonu primary key yapmak istiyorsak
+
+public class Personn
+{
+    public int Id1 { get; set; }
+    public int Id2 { get; set; }
+    public string? Name { get; set; }
+
+}
+
+
+
+public class ApplicationContext : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn>().HasKey(x => new { x.Id1, x.Id2 });
+    }
+}
+
+#endregion
+
+#region HasDefaultSchema
+
+// ef core üzerinden default olan veritabanını nesnesi dbo şemasıdır. değiştirmek için kullanıır.
+
+public class Personn1
+{
+    public int Id1 { get; set; }
+    public string? Name { get; set; }
+
+}
+
+public class PersonContext1 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.HasDefaultSchema("Cevdet");
+    }
+}
+
+#endregion
+
+#region HasDefaultValue
+
+// Default olarak veri eklemizi sağlar
+
+public class Personn2
+{
+    public int Id1 { get; set; }
+    public string? Name { get; set; }
+
+}
+
+public class PersonContext2 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn2>().Property(x => x.Name).HasDefaultValue("Cevdet");
+    }
+}
+
+#endregion
+
+#region HasDefaultValueSql
+
+// default olarak hangi sql cümleciginden veri alacagını belirler
+
+public class Personn3
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+    public DateTime DateTime { get; set; }
+}
+
+public class PersonContext3 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn3>().Property(x => x.DateTime).HasDefaultValueSql("GetDate()");
+    }
+}
+
+#endregion
+
+#region HasComputedColumnSql
+
+// birden fazla tablodaki verileri başka bir tabloda işlemek için 
+
+public class Example
+{
+    public int Id { get; set; }
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Computed { get; set; }
+
+
+}
+
+public class PersonContext4 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Example>().Property(x => x.Computed).HasComputedColumnSql("[X] + [Y]");
+    }
+}
+
+#endregion
+
+#region HasConstraintName
+
+//  ef core üzerinde oluşturlan constraint lere custom isimler vermemizi sağlar
+
+public class Personn5
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+
+    public int DepartmentId { get; set; }
+
+    public Department1 Department1 { get; set; }
+
+}
+
+public class Department1
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+
+    public ICollection<Personn5> Personn5s { get; set; }
+
+}
+
+public class PersonContext5 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn5>()
+            .HasOne(x => x.Department1)
+            .WithMany(x => x.Personn5s)
+            .HasForeignKey(x => x.DepartmentId)
+            .HasConstraintName("PersonDepartmentFK");
+    }
+}
+
+#endregion
+
+#region HasData
+
+public class Personn6
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+
+}
+
+public class PersonContext6 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn6>().HasData(
+            new List<Personn6>()
+        {
+            new Personn6()
+            {
+                Id = 5,
+                Name = "Cevat"
+            },
+            new Personn6()
+            {
+                Id = 6,
+                Name = "Gülşen"
+            },
+        });
+    }
+}
+
+#endregion
+
+#region HasDiscriminator
+
+public class Entity
+{
+    public int Id { get; set; }
+    public string EntityName { get; set; }
+}
+
+public class A : Entity
+{
+    public string AName { get; set; }
+}
+
+public class B : Entity
+{
+    public string BName { get; set; }
+}
+
+
+public class PersonContext7 : DbContext
+{
+
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Entity>().HasDiscriminator<int>("Ayirici")
+            .HasValue<A>(1)
+            .HasValue<B>(1)
+            .HasValue<Entity>(3);
+    }
+}
+
+
+#endregion
+
+#region HasFiled
+
+public class Personn8
+{
+    public int Id { get; set; }
+    public string? Name { get => _name; set => _name = value; }
+
+    public string _name;
+
+}
+
+public class PersonContext8 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn8>().Property(x => x.Name).HasField(nameof(Personn8._name));
+    }
+}
+#endregion
+
+#region HasNoKey
+
+public class Personn9
+{
+
+    public string? Name { get; set; }
+
+}
+
+public class PersonContext9 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn9>().HasNoKey();
+    }
+}
+
+#endregion
+
+#region HasIndex
+
+public class Personn10
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+
+}
+
+public class PersonContext10 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn10>().HasIndex(x => new { x.Name });
+    }
+}
+
+
+#endregion
+
+#region HasQueryFilter
+
+// Default filtre 
+
+public class Personn11
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+
+}
+
+public class PersonContext11 : DbContext
+{
+
+    public DbSet<Personn> Persons { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Personn11>().HasQueryFilter(x => x.Name.Contains("mustafa"));
+    }
+}
+
+#endregion
+
+#region DatabaseGenerated - 
+
+
+
+#endregion
+
+
+
+
+
+
+
+
+#endregion
 
 //public class AuthorForDefault
 //{

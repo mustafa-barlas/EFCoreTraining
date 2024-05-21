@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Saving_Related_Data\Saving_Related_Data.csproj" />
+  </ItemGroup>
+
 </Project>
