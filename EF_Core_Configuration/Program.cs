@@ -709,11 +709,6 @@ public class PersonContext11 : DbContext
 
 
 
-
-
-
-
-
 #endregion
 
 //public class AuthorForDefault
