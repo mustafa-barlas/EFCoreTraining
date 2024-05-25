@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 //ApplicationContext context = new ApplicationContext();
 
-
+Console.WriteLine();
 
 #region OnModelCreating Metodu
 

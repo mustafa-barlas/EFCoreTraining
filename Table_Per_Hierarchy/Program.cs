@@ -69,8 +69,11 @@ ApplicationContext context = new ApplicationContext();
 
 #region Veri eklme
 
-Employee employee = new Employee() { Id = 5, Name = "John", Surname = "Clark", Department = "IT" };
-Technician technician = new Technician() { Id = 2, Name = "Brandon", Surname = "Parker", Department = "HR", Branch = "Bos" };
+Employee employee = new Employee() { Name = "John", Surname = "Clark", Department = "IT" };
+Technician technician = new Technician() { Name = "Brandon", Surname = "Parker", Department = "HR", Branch = "Bos" };
+Customer customer = new Customer() { Name = "Jeny", Surname = "Stark", CompanyName = "Stark INC." };
+
+await context.Customers.AddAsync(customer);
 await context.Employees.AddAsync(employee);
 await context.Technicians.AddAsync(technician);
 await context.SaveChangesAsync();
@@ -119,6 +122,6 @@ public class ApplicationContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server = MUSTAFABRLS; Database = Library; Trusted_Connection = true; TrustServerCertificate = True;");
+        optionsBuilder.UseSqlServer("Server = MUSTAFABRLS; Database = Library2; Trusted_Connection = true; TrustServerCertificate = True;");
     }
 }
