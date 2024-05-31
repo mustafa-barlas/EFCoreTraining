@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sequences", "Sequences\Sequ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadingRelatedData", "LoadingRelatedData\LoadingRelatedData.csproj", "{3FDC802B-85C6-42E0-BCA5-0E5136DE3CC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Complex_Relational_Queries", "Complex_Relational_Queries\Complex_Relational_Queries.csproj", "{D4E67263-7654-4933-8D4F-C1D61699BD72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{3FDC802B-85C6-42E0-BCA5-0E5136DE3CC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FDC802B-85C6-42E0-BCA5-0E5136DE3CC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FDC802B-85C6-42E0-BCA5-0E5136DE3CC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E67263-7654-4933-8D4F-C1D61699BD72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E67263-7654-4933-8D4F-C1D61699BD72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E67263-7654-4933-8D4F-C1D61699BD72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E67263-7654-4933-8D4F-C1D61699BD72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
