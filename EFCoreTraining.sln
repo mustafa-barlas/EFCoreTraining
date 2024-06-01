@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Complex_Relational_Queries"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL_Queries", "SQL_Queries\SQL_Queries.csproj", "{B44F7B29-8D01-4970-9E7C-1EB2CFA4D575}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{DD1D33F3-5D18-45C7-B1D8-C34B3FEC815C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{B44F7B29-8D01-4970-9E7C-1EB2CFA4D575}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B44F7B29-8D01-4970-9E7C-1EB2CFA4D575}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B44F7B29-8D01-4970-9E7C-1EB2CFA4D575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1D33F3-5D18-45C7-B1D8-C34B3FEC815C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1D33F3-5D18-45C7-B1D8-C34B3FEC815C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1D33F3-5D18-45C7-B1D8-C34B3FEC815C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1D33F3-5D18-45C7-B1D8-C34B3FEC815C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
