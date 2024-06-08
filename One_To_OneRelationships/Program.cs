@@ -4,14 +4,7 @@
 //Principal  kendi başına var olabilen entitydir.
 //Dependent  kendi başına var olamayan entitydir.
 
-class Program
-{
-    static void Main(string[] args)
-    {
-
-    }
-
-}
+Console.WriteLine();
 
 #region Default Convention
 
@@ -94,20 +87,20 @@ class Program
 //            .HasForeignKey<Address>(x => x.Id);
 //    }
 //}
-#endregion
 
+#endregion
 
 
 public class ETradeDbContext : DbContext
 {
-
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Employee> Employees { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server = MUSTAFABRLS; Database = ETRADE; Trusted_Connection = true; TrustServerCertificate = True;");
+        optionsBuilder.UseSqlServer(
+            "Server = MUSTAFABRLS; Database = ETRADE; Trusted_Connection = true; TrustServerCertificate = True;");
     }
 }
 
@@ -117,7 +110,6 @@ public class Employee
     public string? Name { get; set; }
 
     public Address? Address { get; set; }
-
 }
 
 public class Address
