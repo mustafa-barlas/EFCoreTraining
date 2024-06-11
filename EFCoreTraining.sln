@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionResiliency", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataConcurrency", "DataConcurrency\DataConcurrency.csproj", "{49CD5C83-FA85-43DF-BE08-ED99FC5C7120}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueConversions", "ValueConversions\ValueConversions.csproj", "{841D6C25-35EF-4B22-950E-56A193251487}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -219,6 +221,10 @@ Global
 		{49CD5C83-FA85-43DF-BE08-ED99FC5C7120}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49CD5C83-FA85-43DF-BE08-ED99FC5C7120}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49CD5C83-FA85-43DF-BE08-ED99FC5C7120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{841D6C25-35EF-4B22-950E-56A193251487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{841D6C25-35EF-4B22-950E-56A193251487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{841D6C25-35EF-4B22-950E-56A193251487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{841D6C25-35EF-4B22-950E-56A193251487}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
