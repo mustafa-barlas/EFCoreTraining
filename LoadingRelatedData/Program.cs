@@ -66,11 +66,21 @@ var employess = await context.Employees.ToListAsync();
 
 //  oluşturlan sorguya eklenecek verilerin sonradan gereksinimlerin ortaya çıkması ve belirlenmseinden sonra verilerin yüklenmesini  sağlayan yaklaşımdır.
 
-// var employee27 = await context.Employees.FirstOrDefaultAsync(x => x.Salary > 6485);
-// if (employee27.Name == "Mustafa")
-// {
-//     var orders25 = await context.Orders.Where(x => x.EmployeeId.Equals(employee27.Id)).ToListAsync();
-// }
+var employee273 = await context.Employees.FirstOrDefaultAsync(x => x.Salary > 6485);
+if (employee273.Name == "Mustafa")
+{
+    var orders25 = await context.Orders.Where(x => x.EmployeeId.Equals(employee273.Id)).ToListAsync();
+}
+
+var someResult = await context.Employees.Where(x => x.Salary > 646).ToListAsync();
+
+if (someResult != null)
+{
+    foreach (var some in someResult)
+    {
+        await context.Entry(some).Collection(x => x.Orders).LoadAsync();
+    }
+}
 
 
 #region Reference // Tekil
